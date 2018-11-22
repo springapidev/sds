@@ -14141,7 +14141,7 @@ pre {
   -moz-transition: all 0.25s ease;
   -webkit-transition: all 0.25s ease;
   -ms-transition: all 0.25s ease;
-  width: calc(100% - 247px);
+  width: 100%;
   border-top: 1px solid #e6ecf5;
   font-size: calc(0.875rem - 0.05rem);
   font-family: "pt-sans-regular", sans-serif; }

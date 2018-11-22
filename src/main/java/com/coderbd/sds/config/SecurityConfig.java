@@ -51,25 +51,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity
                 .authorizeRequests()
                 .antMatchers(
-                        "/",
-                        "/css/**",
+                      "/css/**",
                         "/highlights/**",
                         "/js/**",
                         "/images/**",
                         "/fonts/**",
                         "/webfonts/**",
                         "/signup/**",
-                        "/forget-password/**",
-                        "/port/**"
+                        "/forget-password/**"
                 ).permitAll()
                 .antMatchers(
+                        "/**",
                        "/privilize/**",
-                        "/category/**",
                         "/user/**",
                         "/role/**"
                         ).hasRole("ADMIN")
-                .antMatchers("/post/**",
-                        "/tag/**").hasRole("USER")
+                .antMatchers("/port/**").hasRole("USER")
                 .anyRequest()
                 .authenticated()
                 .and()

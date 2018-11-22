@@ -1,0 +1,382 @@
+-- MySQL Administrator dump 1.4
+--
+-- ------------------------------------------------------
+-- Server version	5.6.35-log
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+--
+-- Create schema oauth
+--
+
+CREATE DATABASE IF NOT EXISTS oauth;
+USE oauth;
+
+--
+-- Definition of table `category`
+--
+
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE `category` (
+  `id` bigint(20) NOT NULL,
+  `category_name` varchar(255) DEFAULT NULL,
+  `cat_des` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_lroeo5fvfdeg4hpicn4lw7x9b` (`category_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `category`
+--
+
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+INSERT INTO `category` (`id`,`category_name`,`cat_des`) VALUES 
+ (42,'Core Java','This Category will describe details about Core Java from ins and out with step by step.'),
+ (43,'Java Data Structures','This Java Data Structures Category will describe details about Java Data Structures from ins and out with step by step with complete examples and source code.'),
+ (44,'Problem Solving using Java','This Category will describe details about algorithms uisng Java from ins and out with step by step with complete examples and source code.'),
+ (45,'Spring Framework','This Category will describe details about Spring Framework core like IoC container, Dependency Injection, Autowired, qualifier, annotations  from ins and out with step by step with complete examples and source code.'),
+ (46,'Spring Boot','This Category will describe details aboutSpring Boot from ins and out with step by step and with examples.');
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+
+
+--
+-- Definition of table `comment`
+--
+
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE `comment` (
+  `id` bigint(20) NOT NULL,
+  `comment_date` datetime DEFAULT NULL,
+  `description` varchar(10000) DEFAULT NULL,
+  `ip_address` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  `post_id` bigint(20) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `parent_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKde3rfu96lep00br5ov0mdieyt` (`parent_id`),
+  KEY `FKs1slvnkuemjsq2kj4h3vhx7i1` (`post_id`),
+  KEY `FK8kcum44fvpupyw6f5baccx25c` (`user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `comment`
+--
+
+/*!40000 ALTER TABLE `comment` DISABLE KEYS */;
+INSERT INTO `comment` (`id`,`comment_date`,`description`,`ip_address`,`status`,`update_date`,`post_id`,`user_id`,`parent_id`) VALUES 
+ (93,'2018-11-19 23:31:48','<p>test,,,,,,,,,,,,,............................................</p>\r\n',NULL,'1','2018-11-19 23:31:48',92,73,93),
+ (94,'2018-11-19 23:32:06','<p>nice</p>\r\n',NULL,'1','2018-11-19 23:32:06',92,73,93),
+ (95,'2018-11-19 23:32:15','<p>awesome</p>\r\n',NULL,'1','2018-11-19 23:32:15',92,74,93),
+ (96,'2018-11-19 23:40:27','<p>wow</p>\r\n',NULL,'1','2018-11-19 23:40:27',91,74,93),
+ (97,'2018-11-19 23:47:56','<p>wowwwwwwwwwww</p>\r\n','0:0:0:0:0:0:0:1','1','2018-11-19 23:47:56',92,77,93),
+ (98,'2018-11-19 23:50:58','<p>hmmmmmmmm</p>\r\n','0:0:0:0:0:0:0:1','1','2018-11-19 23:50:58',92,77,93),
+ (102,'2018-11-20 00:05:55','   class NameIterator implements Iterator {\r\n      int index;\r\n      @Override\r\n      public boolean hasNext() {\r\n         if(index < names.length){\r\n            return true;\r\n         }\r\n         return false;\r\n      }\r\n      @Override\r\n      public Object next() {\r\n         if(this.hasNext()){\r\n            return names[index++];\r\n         }\r\n         return null;\r\n      }    \r\n   }\r\n}\r\n','0:0:0:0:0:0:0:1','1','2018-11-20 00:05:55',92,77,93),
+ (103,'2018-11-20 00:09:08','public class Main {\r\n   public static void main(String[] args) {\r\n      LetterBag bag = new LetterBag();\r\n      for(Iterator iter = bag.getIterator(); iter.hasNext();){\r\n         String name = (String)iter.next();\r\n         System.out.println(\"Name : \" + name);\r\n      }   \r\n   }\r\n','0:0:0:0:0:0:0:1','1','2018-11-20 00:09:08',92,77,93),
+ (104,'2018-11-20 00:21:24','<pre class=\"code\" data-language=\"java\">\r\nclass LetterBag {\r\n   public String names[] = {\"R\" , \"J\" ,\"A\" , \"L\"};\r\n   public Iterator getIterator() {\r\n      return new NameIterator();\r\n   }</pre.\r\n<h3>Okkkkkkkkkkkkkkkk</h3>\r\n<pre class=\"code\" data-language=\"java\">\r\n   class NameIterator implements Iterator {\r\n      int index;\r\n      @Override\r\n      public boolean hasNext() {\r\n         if(index < names.length){\r\n            return true;\r\n         }\r\n         return false;\r\n      }\r\n      @Override\r\n      public Object next() {\r\n         if(this.hasNext()){\r\n            return names[index++];\r\n         }\r\n         return null;\r\n      }    \r\n   }\r\n}\r\n\r\n</pre>','0:0:0:0:0:0:0:1','1','2018-11-20 00:21:24',92,78,93),
+ (105,'2018-11-20 00:22:21','class NameIterator implements Iterator {\r\n      int index;\r\n      @Override\r\n      public boolean hasNext() {\r\n         if(index < names.length){\r\n            return true;\r\n         }\r\n         return false;\r\n      }\r\n      @Override\r\n      public Object next() {\r\n         if(this.hasNext()){\r\n            return names[index++];\r\n         }\r\n         return null;\r\n      }    \r\n   }\r\n}','0:0:0:0:0:0:0:1','1','2018-11-20 00:22:21',92,78,93),
+ (106,'2018-11-20 00:23:04','<pre class=\"code\" data-language=\"java\">  \r\n class NameIterator implements Iterator {\r\n      int index;\r\n      @Override\r\n      public boolean hasNext() {\r\n         if(index < names.length){\r\n            return true;\r\n         }\r\n         return false;\r\n      }\r\n      @Override\r\n      public Object next() {\r\n         if(this.hasNext()){\r\n            return names[index++];\r\n         }\r\n         return null;\r\n      }    \r\n   }\r\n}\r\n\r\n</pre>','0:0:0:0:0:0:0:1','1','2018-11-20 00:23:04',91,78,93),
+ (107,'2018-11-20 00:34:10','<p>thanks</p>\r\n','0:0:0:0:0:0:0:1','1','2018-11-20 00:34:10',91,73,93),
+ (108,'2018-11-20 20:54:47','<p>bbbbbbb</p>\r\n','0:0:0:0:0:0:0:1','1','2018-11-20 20:54:47',59,73,93),
+ (109,'2018-11-20 20:55:08','<p>nnnnnnnn</p>\r\n','0:0:0:0:0:0:0:1','1','2018-11-20 20:55:08',61,74,93),
+ (110,'2018-11-20 21:10:29','    public static void main(String args[]){  \r\n    int a[]=new int[5];//declaration and instantiation  \r\n    a[0]=10;//initialization  \r\n    a[1]=20;  \r\n    a[2]=70;  \r\n    a[3]=40;  \r\n    a[4]=50;  \r\n    //traversing array  \r\n    for(int i=0;i<a.length;i++) length=\"\" is=\"\" the=\"\" property=\"\" of=\"\" array=\"\" system.out.println(a[i]);=\"\" }}=\"\" <=\"\" pre=\"\">\r\nPassing Array to Method in Java\r\n','0:0:0:0:0:0:0:1','1','2018-11-20 21:10:29',91,77,93),
+ (111,'2018-11-20 21:58:32',' class NameIterator implements Iterator {\r\n      int index;\r\n      @Override\r\n      public boolean hasNext() {\r\n         if(index < names.length){\r\n            return true;\r\n         }\r\n         return false;\r\n      }\r\n','0:0:0:0:0:0:0:1','1','2018-11-20 21:58:32',91,74,93),
+ (112,'2018-11-20 22:29:22','okkkkkk','0:0:0:0:0:0:0:1','1','2018-11-20 22:29:22',90,73,93),
+ (113,'2018-11-21 08:32:06','okkkkkkkkkkkkkkkkkkkkk','0:0:0:0:0:0:0:1','1','2018-11-21 08:32:06',92,77,NULL);
+/*!40000 ALTER TABLE `comment` ENABLE KEYS */;
+
+
+--
+-- Definition of table `hibernate_sequence`
+--
+
+DROP TABLE IF EXISTS `hibernate_sequence`;
+CREATE TABLE `hibernate_sequence` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `hibernate_sequence`
+--
+
+/*!40000 ALTER TABLE `hibernate_sequence` DISABLE KEYS */;
+INSERT INTO `hibernate_sequence` (`next_val`) VALUES 
+ (114),
+ (114),
+ (114);
+/*!40000 ALTER TABLE `hibernate_sequence` ENABLE KEYS */;
+
+
+--
+-- Definition of table `post`
+--
+
+DROP TABLE IF EXISTS `post`;
+CREATE TABLE `post` (
+  `id` bigint(20) NOT NULL,
+  `description` varchar(10000) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `post_cat_id` bigint(20) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  `no_clicks` bigint(20) DEFAULT NULL,
+  `no_likes` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_2jm25hjrq6iv4w8y1dhi0d9p4` (`title`),
+  KEY `FKlaxryc0tl8w8hht0kjw8acgl7` (`post_cat_id`),
+  KEY `FK72mt33dhhs48hf9gcqrq4fxte` (`user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `post`
+--
+
+/*!40000 ALTER TABLE `post` DISABLE KEYS */;
+INSERT INTO `post` (`id`,`description`,`title`,`post_cat_id`,`user_id`,`create_date`,`status`,`update_date`,`no_clicks`,`no_likes`) VALUES 
+ (59,'A data type defines three components:      A set of values     A set of operations that can be applied to all values in the set     A data representation, which determines how the values are stored','What Is a Data Type?',42,NULL,NULL,NULL,NULL,NULL,NULL),
+ (60,'User-defined data types can have primitive data types and other user-defined data types.  Typically, a programming language does not let the programmers extend or redefine primitive data types.  Java provides many built-in primitive data types, such as int, float, boolean, char, etc.  For example, the three components that define the int primitive data type in Java are as follows:      An int data type can have all integers between -2,147,483,648 and 2,147,483,647.     Operations such as addition, subtraction, multiplication, division, comparison, bit operation and many more are defined for the int data type.     A value of the int data type is represented in 32-bit memory in 2\'s compliment form.   You can give a name to a value of the int data type as  int count;      This statement defines that count is of int type.  count is a name (an identifier).  It can have one value from the set of values that defines values for the int data type.  For example, you can associate integer 1 to the name count using an assignment statement like  count = 1;   The following code shows how to declare variables of different data types using literals. ','What is User-defined data type?',42,NULL,NULL,NULL,NULL,NULL,NULL),
+ (61,'public class Main {          public static void main(String[] args) {                  int anInt = 100;                  long aLong = 200L;                  byte aByte = 99;                  short aShort = -902;                  char aChar = \'A\';                  float aFloat = 99.98F;                  double aDouble = 999.89;                    //from   w w  w  .  ja v a 2s  . co m                 // Print values of the variables                  System.out.println(\"anInt = \" + anInt);                  System.out.println(\"aLong = \" + aLong);                  System.out.println(\"aByte = \" + aByte);                  System.out.println(\"aShort = \" + aShort);                  System.out.println(\"aChar = \" + aChar);                  System.out.println(\"aFloat = \" + aFloat);                  System.out.println(\"aDouble = \" + aDouble);           }  }','Demo Code',42,NULL,NULL,NULL,NULL,NULL,NULL),
+ (62,'What Is an Identifier?  An identifier is simply the name given to a class, method, variable, etc. in a Java program.  An identifier in Java is a sequence of characters of unlimited length.  The sequence of characters includes all Java letters and Java digits, the first of which must be a Java letter. Features of Java Identifier?      There is no limit on the number of characters used in an identifier.     Characters used in an identifier are drawn from the Unicode character set, not only from the ASCII character set. A Java letter is a letter from any language that is represented by Unicode character set.     Java Identifiers are case sensitive. For example, num and Num are two different identifiers.     Spaces are not allowed in an identifier.   For example, A-Z, a-z, _ (underscore), and $ are considered Java letters from the ASCII character set range of Unicode. ','Java - Data Types Java Identifier',42,NULL,NULL,NULL,NULL,NULL,NULL),
+ (63,'Valid Java Identifier  Examples of valid identifiers are as follows: Name	Description num1	Can use a-z and 0-9 and start with a letter letter	Only letters aLetter	Can mix uppercase and lowercase a1Letter	Can mix letter and digit as long as the first letter is not digit _aaa	Can start with an underscore _	Can have only one letter, which is an underscore sum_of_two_numbers	Can have letters and underscores Outer$Inner$Level	Can have a-z, A-Z and $ $var	Can start with $','What are Java Keywords ',42,NULL,NULL,NULL,NULL,NULL,NULL),
+ (64,'Java defines a list of words called keywords.  Keywords in Java can only be used in the contexts defined by the Java language.  Keywords in Java cannot be used as identifiers. ','What is a variable ',42,NULL,NULL,NULL,NULL,NULL,NULL),
+ (68,'<p>User-defined data types can have primitive data types and other user-defined data types. Typically, a programming language does not let the programmers extend or redefine primitive data types. Java provides many built-in primitive data types, such as int, float, boolean, char, etc. For example, the three components that define the int primitive data type in Java are as follows: An int data type can have all integers between -2,147,483,648 and 2,147,483,647. Operations such as addition, subtraction, multiplication, division, comparison, bit operation and many more are defined for the int data type. A value of the int data type is represented in 32-bit memory in 2\'s compliment form. You can give a name to a value of the int data type as int count; This statement defines that count is of int type. count is a name (an identifier). It can have one value from the set of values that defines values for the int data type. For example, you can associate integer 1 to the name count using an assignment</p><p>&nbsp;statement like count = 1; The following code shows how to declare variables of different data types using literals. User-defined data types can have primitive data types and other user-defined data types. Typically, a programming language does not let the programmers extend or redefine primitive data types. Java provides many built-in primitive data types, such as int, float, boolean, char, etc. For example, the three components that define the int primitive data type in Java are as follows: An int data type can have all integers between -2,147,483,648 and 2,147,483,647. Operations such as addition, subtraction, multiplication, division, comparison, bit operation and many more are defined for the int data type. A value of the int data type is represented in 32-bit memory in 2\'s compliment form. You can give a name to a value of the int data type as int count; This statement defines that count is of int type. count is a name (an identifier). It can have one value from the set of values that defines values for the int data type. For example, you can associate integer 1 to the name count using an assignment statement like count = 1; The following code shows how to declare variables of different data types using literals.&nbsp;</p>','FEDuPSS G200 Gildan Ultra Cotton T-Shirt noo',45,NULL,NULL,NULL,NULL,NULL,NULL),
+ (79,'<h4><strong>ok </strong>r-defined data types can have primitive data type<strong>s and other user-defined data types. T</strong>ypically, a programming language does not let the programmers extend or redefine primitive data types. Java provides many built-in primitive data types, such as int, float, boolean, char, etc<a href=\"https://google.com\">. For example, the thr</a>ee components that define the int prim<i>itive data type in Java are as follows: An int data type ca</i>n have all integers between -2,147,483,648 and 2,147,483,647. Operations such as addition, subtraction, multiplicati</h4>','okkkkkkkkk',42,NULL,NULL,NULL,NULL,NULL,NULL),
+ (80,'<ol><li>ed data types can have primitive data types and o<strong>ther user-defined</strong><i><strong> data types.</strong></i></li><li><i><strong>&nbsp;Typically, a programming language do</strong></i><strong>es not let the programmers extend or</strong></li><li><strong>&nbsp;redefine primitive data types. Java provides many built-in primitive data ty</strong></li></ol><ul><li><strong>pes, such as int, float, boolean, char, etc. For example, the three components that define the int primitive </strong>data type in Java are as follows: An int data type can have all integers between -2,147,483,648 and 2,147,483,647. Operations such as addition, subtraction, multiplication, d<i>ivision, comparison, bit operation and many more are defined for th</i>e int data type. A value of the int data type is represented in 32-bit memory in 2\'s compliment form. You can give a name to a value of the int data type as int count; This statement defines that count is of int type. count is a name (an identifier). It can have one value from the set of values that defines values for the i</li></ul>','Presentation pppppppppppp',45,NULL,NULL,NULL,NULL,NULL,NULL),
+ (81,'<p>in primitive data types, such as int, float, boolean, char, etc. For example, the three components that define the int primitive data type in Java are as follows: An int data type can have all integers between -2,147,483,648 and 2,147,483,647. Operations such as addition, subtraction, multiplication, division, comparison, bit operation and many more are defined for the int data type. A value of the int data type is represented in 32-bit memory in 2\'s compliment form. You can give a name to a value of the int data type as int count; This statement defines that count is of int type. count is a name (an identifier). It can have one value from the set of va</p><figure class=\"table\"><table><tbody><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure>','Presentation nai.....',46,NULL,NULL,NULL,NULL,NULL,NULL),
+ (82,'<p><strong>Hellllllllllllllloooooooooooooo </strong>Java</p>\r\n\r\n<p>ata type is represented in 32-bit memory in 2&#39;s compliment form. You can give a name to a value of the int data type as int count; This statement defines that count is of int type. count is a name (an identifier). It can have one value from the set of values that defines values for the int data type. For example, you can associate integer 1 to the name count using an assignment statement like count = 1; The following code shows how to declare variables of different data types using literals.</p>\r\n\r\n<p>ata type is represented in 32-bit memory in 2&#39;s compliment form. You can give a name to a value of the int data type as int count; This statement defines that count is of int type. count is a name (an identifier). It can have one value from the set of values that defines values for the int data type. For example, you can associate integer 1 to the name count using an assignment statement like count = 1; The following code shows how to declare variables of different data types using literals.</p>\r\n\r\n<p>&nbsp;</p>\r\n','Hellllllllllllllloooooooooooooo Java',42,NULL,NULL,NULL,NULL,NULL,NULL),
+ (83,'<p>মির্জা ফখরুল ইসলাম আলমগীর বলেন, বিনা কারণে, বিনা উসকানিতে যখন নেতা-কর্মীদের শান্তিপূর্ণ মিছিল আসছিল, সেখানে পুলিশ ঢুকে গিয়ে হঠাৎ করে বাঁধা দিতে শুরু করে এবং এরপরেই টিয়ারগ্যাস ছোড়া হয়েছে, গুলি চালানো হয়েছে। বহু নেতা-কর্মী আহত হয়েছেন। তারপরে হঠাৎ করেই পুলিশের গাড়িতে আগুন লাগাল। পুলিশের গাড়িতে আগুন লাগাল কারা?</p>\r\n\r\n<p>নয়াপল্টনে সংঘর্ষের ঘটনার প্রসঙ্গে মির্জা ফখরুল বলেন, এই ঘটনা ঘটানোর উদ্দেশ্য হচ্ছে, নির্বাচনের কর্মসূচিকে বানচাল করা, নির্বাচনকে বানচাল করা। এই আক্রমণ শুধু বিএনপির নেতা-কর্মীদের ওপর আক্রমণ নয়, এটা গণতন্ত্রের ওপর আক্রমণ, এটা সুষ্ঠু, অবাধ নির্বাচনের ওপর আক্রমণ। তিনি বলেন, যখন নির্বাচনের তফসিল ঘোষণা করেছে, বিরোধী দল নির্বাচনে অংশগ্রহণ করছে<strong>, যখন উদ্দীপনার মধ্য দিয়ে আমাদের নেতা-কর্মীরা নির্বাচনে অংশ নিচ্ছেন, তখনই এই আক্রমণ। </strong>সেই আক্রমণটা সরাসরি সরকারের কাছ থেকে নির্বাচন কমিশনের যোগসাজশে আসল।</p>\r\n\r\n<p>ফখরুল ইসলাম অভিযোগ করেন, নয়াপল্টনের এই ঘটনার পর সন্ধ্যায় অফিস থেকে যারা বেরিয়েছেন, তাদের গ্রেপ্তার করা হয়েছে। বগুড়ার সাবেক সাংসদ ও চেয়ারপারসনের উপদেষ্টা পরিষদের সদস্য হেলালুজ্জামান লালু, গ্রাম সরকার সম্পাদক আনিসউজ্জামান খান এবং খুলনা জেলার বিএনপির সাধারণ সম্পাদক আমির রেজা খানসহ কমপক্ষে ৬০ থেকে ৭০ জনকে গ্রেপ্তার করা হয়েছে। তিনি আরও বলেন, এটাকে আমরা হালকা করে দেখছি না।</p>\r\n\r\n<ol>\r\n	<li>আমরা নির্বাচন কমিশনকে পরিষ্কার করে বলতে চাই, এই মামলাগুলো প্রত্যাহার করতে হবে।</li>\r\n	<li>পুলিশ প্রশাসনকে বলতে চাই, অবিলম্বে গ্রেপ্তারকৃতদের মুক্তি দিতে হবে। অন্যথায় এই নির্বাচনের</li>\r\n	<li>ব্যাপারে আমাদের সিদ্ধান্ত পুনর্বিবেচনা করতে এতটুকু দ্বিধাবোধ করব না। এর দায়-দায়িত্ব বর্তা</li>\r\n	<li>বে সম্পূর্ণ নির্বাচন কমিশনের ওপর ও সরকারের ওপর।</li>\r\n	<li>&nbsp;</li>\r\n</ol>\r\n','নয়াপল্টনে হেলমেট পরা লোকজন ছাত্রলীগের: ফখরুল',46,NULL,NULL,NULL,NULL,NULL,NULL),
+ (84,'<p>আওয়ামী লীগের সহযোগী সংগঠন কৃষক লীগের এক কেন্দ্রীয় নেতা আনুষ্ঠানিকভাবে বিএনপিতে যোগ দিয়েছেন। আজ বুধবার রাতে গুলশানে বিএনপির চেয়ারপারসনের রাজনৈতিক কার্যালয়ে এক অনুষ্ঠানের মাধ্যমে তিনি বিএনপিতে যোগ দেন। তিনি একাদশ সংসদ নির্বাচনে বিএনপির মনোনয়ন ফরম কিনেছেন।</p>\r\n\r\n<p>ওই নেতার নাম ফারুক আলম সরকার। তিনি কেন্দ্রীয় কৃষক লীগের সহসভাপতি। ফারুক আলম সরকারের বিএনপিতে যোগদান উপলক্ষে বুধবার রাতে এক অনুষ্ঠানের আয়োজন করে বিএনপি। এ সময় দলটির মহাসচিব মির্জা ফখরুল ইসলাম আলমগীর অভিযোগ করেন, সরকার একাদশ জাতীয় সংসদ নির্বাচন বানচালের ষড়যন্ত্র করছে। নির্বাচন বানচাল করার জন্য আজ বিএনপির কার্যালয়ের সামনে শান্তিপূর্ণ নেতা-কর্মীদের ওপর পুলিশ হামলা চালিয়েছে। এসব সহিংসতা করে সরকার নির্বাচন বানচাল করতে চায়।</p>\r\n\r\n<figure class=\"easyimage easyimage-side\"><img alt=\"\" src=\"blob:http://localhost:8009/3ae62ed1-13f6-4479-bbd7-a3097f4c5ea5\" width=\"162\" />\r\n<figcaption></figcaption>\r\n</figure>\r\n\r\n<p>ঐক্যফ্রন্টের মুখপাত্র ফখরুল ইসলাম আলমগীর বলেন, আমি স্পষ্টভাবে বলে দিতে চাই, আমরা কোনোভাবেই নির্বাচন বানচাল করতে দেব না। আমরা মনে করি, নির্বাচনের মাধ্যমেই এই সরকারের অপসারণ হবে, নির্বাচনই সরকার পরিবর্তনের একমাত্র পথ।</p>\r\n\r\n<p>আওয়ামী লীগের সহযোগী সংগঠন কৃষক লীগের এক কেন্দ্রীয় নেতা আনুষ্ঠানিকভাবে বিএনপিতে যোগ দিয়েছেন। আজ বুধবার রাতে গুলশানে বিএনপির চেয়ারপারসনের রাজনৈতিক কার্যালয়ে এক অনুষ্ঠানের মাধ্যমে তিনি বিএনপিতে যোগ দেন। তিনি একাদশ সংসদ নির্বাচনে বিএনপির মনোনয়ন ফরম কিনেছেন।</p>\r\n\r\n<p>ওই নেতার নাম ফারুক আলম সরকার। তিনি কেন্দ্রীয় কৃষক লীগের সহসভাপতি। ফারুক আলম সরকারের বিএনপিতে যোগদান উপলক্ষে বুধবার রাতে এক অনুষ্ঠানের আয়োজন করে বিএনপি। এ সময় দলটির মহাসচিব মির্জা ফখরুল ইসলাম আলমগীর অভিযোগ করেন, সরকার একাদশ জাতীয় সংসদ নির্বাচন বানচালের ষড়যন্ত্র করছে। নির্বাচন বানচাল করার জন্য আজ বিএনপির কার্যালয়ের সামনে শান্তিপূর্ণ নেতা-কর্মীদের ওপর পুলিশ হামলা চালিয়েছে। এসব সহিংসতা করে সরকার নির্বাচন বানচাল করতে চায়।</p>\r\n\r\n<p>ঐক্যফ্রন্টের মুখপাত্র ফখরুল ইসলাম আলমগীর বলেন, আমি স্পষ্টভাবে বলে দিতে চাই, আমরা কোনোভাবেই নির্বাচন বানচাল করতে দেব না। আমরা মনে করি, নির্বাচনের মাধ্যমেই এই সরকারের অপসারণ হবে, নির্বাচনই সরকার পরিবর্তনের একমাত্র পথ।</p>\r\n\r\n<p>আওয়ামী লীগের সহযোগী সংগঠন কৃষক লীগের এক কেন্দ্রীয় নেতা আনুষ্ঠানিকভাবে বিএনপিতে যোগ দিয়েছেন। আজ বুধবার রাতে গুলশানে বিএনপির চেয়ারপারসনের রাজনৈতিক কার্যালয়ে এক অনুষ্ঠানের মাধ্যমে তিনি বিএনপিতে যোগ দেন। তিনি একাদশ সংসদ নির্বাচনে বিএনপির মনোনয়ন ফরম কিনেছেন।</p>\r\n\r\n<p>ওই নেতার নাম ফারুক আলম সরকার। তিনি কেন্দ্রীয় কৃষক লীগের সহসভাপতি। ফারুক আলম সরকারের বিএনপিতে যোগদান উপলক্ষে বুধবার রাতে এক অনুষ্ঠানের আয়োজন করে বিএনপি। এ সময় দলটির মহাসচিব মির্জা ফখরুল ইসলাম আলমগীর অভিযোগ করেন, সরকার একাদশ জাতীয় সংসদ নির্বাচন বানচালের ষড়যন্ত্র করছে। নির্বাচন বানচাল করার জন্য আজ বিএনপির কার্যালয়ের সামনে শান্তিপূর্ণ নেতা-কর্মীদের ওপর পুলিশ হামলা চালিয়েছে। এসব সহিংসতা করে সরকার নির্বাচন বানচাল করতে চায়।</p>\r\n\r\n<p>ঐক্যফ্রন্টের মুখপাত্র ফখরুল ইসলাম আলমগীর বলেন, আমি স্পষ্টভাবে বলে দিতে চা<strong><em>ই, আমরা কোনোভাবেই নির্বাচন বানচাল করতে দেব না। আমরা মনে করি, নির্বাচনের মাধ্যমেই এই সরকারের অপসারণ হবে, নির্বাচনই সরকার পরিবর্তনের একমাত্র পথ।</em></strong></p>\r\n\r\n<p>&nbsp;</p>\r\n',' কৃষক লীগের সহসভাপতি ফারুক কিনলেন বিএনপির মনোনয়ন ফরম',45,NULL,NULL,NULL,NULL,NULL,NULL),
+ (85,'<p>ইউরোপীয় ইউনিয়ন (ইইউ) থেকে যুক্তরাজ্যের বিচ্ছেদ বিষয়ে একটি খসড়া চুক্তি চূড়ান্ত করেছে উভয় পক্ষ। দীর্ঘ প্রায় দেড় বছর যাবৎ দফায় দফায় বৈঠক, পাল্টাপাল্টি বিবৃতি আর দর-কষাকষির পর তারা সমঝোতায় এল। তবে খসড়া চুক্তির বিস্তারিত প্রকাশ হওয়ার আগেই যুক্তরাজ্যে এ নিয়ে চরম অসন্তোষ দেখা দিয়েছে। মতপার্থক্য নিরসন করে এ চুক্তি সম্পাদনে মন্ত্রিপরিষদ ও সংসদের অনুমোদন আদায় করাটাই এখন থেরেসা মের জন্য বড় চ্যালেঞ্জ।</p>\r\n\r\n<p>ফাঁস হওয়া খসড়া চুক্তির বরাত দিয়ে বিবিসির প্রতিবেদনে বলা হয়েছে, আয়ারল্যান্ড সীমান্ত নিয়ে কোনো সুরাহা না হওয়ায় আপাতত ইইউর কাস্টমস ইউনিয়নের অন্তর্ভুক্ত থাকবে যুক্তরাজ্য। এ জন্য ব্যবসা-বাণিজ্য এবং আমদানি-রপ্তানিতে ইইউর আইন মেনে চলতে হবে যুক্তরাজ্যকে। যুক্তরাজ্য চাইলেই কাস্টমস ইউনিয়ন থেকে বের হয়ে আসতে পারবে না। এ ক্ষেত্রে একটি স্বাধীন কমিটির মতামতের প্রয়োজন হবে। এ ছাড়া উভয় পক্ষের নাগরিকদের অধিকার ও ৩৯ বিলিয়ন পাউন্ডের বিচ্ছেদ বিল (যুক্তরাজ্যের কাছে ইইউর পাওনা) পরিশোধের বিষয়ে বিস্তারিত উল্লেখ আছে। ২০১৯ সালের ২৯ মার্চ বিচ্ছেদ কার্যকর হওয়ার পর ২১ মাস যাবৎ অন্তর্বর্তীকালীন ব্যবস্থা হিসেবে বর্তমান সম্পর্ক বজায় থাকবে।</p>\r\n\r\n<p>তবে খসড়া চুক্তিতে বিচ্ছেদ&ndash;পরবর্তী সম্পর্ক নিয়ে খুব বেশি কিছু উল্লেখ নেই। কারণ, দীর্ঘমেয়াদি বাণিজ্য সম্পর্ক নিয়ে কোনো সমঝোতা এখনো হয়নি।</p>\r\n\r\n<p>আজ বুধবার প্রধানমন্ত্রী থেরেসা মে স্থানীয় সময় বেলা দুইটায় মন্ত্রিপরিষদের বৈঠক ডাকেন। এর আগে সকাল থেকেই প্রত্যেক মন্ত্রীর সঙ্গে আলাদা আলাদা (ওয়ান টু ওয়ান) বৈঠক করেন। খসড়া চুক্তি সম্পর্কে তিনি মন্ত্রীদের বোঝানোর চেষ্টা করেন যে যুক্তরাজ্য সর্বোচ্চটাই আদায় করার চেষ্টা করেছে।</p>\r\n\r\n<p>প্রায় ৫০০ পৃষ্ঠার এ খসড়া চুক্তিতে স্বাক্ষরের আগে মন্ত্রিপরিষদের অনুমোদন নিতে হবে। তারপর ইইউ সদস্যদেশগুলোর অনুমোদনের জন্য ২৮ নভেম্বর বিশেষ সম্মেলন আয়োজনের কথা রয়েছে। সেখানে অনুমোদন পেলে চুক্তিতে স্বাক্ষর করবে উভয় পক্ষ।</p>\r\n\r\n<p>এখানেই শেষ নয়। চুক্তি কার্যকর করতে হলে থেরেসা মেকে ব্রিটিশ পার্লামেন্টের অনুমোদন নিতে হবে। অন্যদিকে ইইউ সদস্যদেশগুলোর পার্লামেন্টে চুক্তির অনুমোদন দিতে হবে। তবেই কার্যকর হবে এ চুক্তি। সব পর্ব শেষ করে ডিসেম্বরে বড় দিনের ছুটির আগেই চুক্তিটি পার্লামেন্টে তুলতে চান মে। সেখানেই তিনি বড় চ্যালেঞ্জের মুখে পড়বেন বলে আভাস পাওয়া যাচ্ছে।</p>\r\n\r\n<p>বিচ্ছেদপন্থীদের পাশাপাশি বিচ্ছেদবিরোধী এমপিরাও এই খসড়া চুক্তির বিরোধিতায় সরব হয়েছেন। বিচ্ছেদপন্থী সাবেক পররাষ্ট্রমন্ত্রী বরিস জনসন খসড়া প্রস্তাবের বিরোধিতা করে বলেছেন, &lsquo;গণতন্ত্রে বিশ্বাস করে এমন যে কারও জন্যই এই চুক্তি অগ্রহণযোগ্য।&rsquo; থেরেসা মের ব্রেক্সিট প্রস্তাবের বিরোধিতা করে গত জুলাইয়ে মন্ত্রিসভা থেকে পদত্যাগ করেছিলেন বরিস। বিচ্ছেদপন্থী আরেক শীর্ষ নেতা জেকব রিস-মগ বলেন, চুক্তি নিয়ে তিনি খুব অসন্তুষ্ট। তিনি থেরেসা মের পদত্যাগের ডাক দেবেন। ক্ষমতাসীন দলীয় এমপি জেকব কট্টর ব্রেক্সিটপন্থী কনজারভেটিভ এমপিদের সংগঠন ইউরোপিয়ান রিসার্চ গ্রুপের নেতা। বিরোধী দল লেবার পার্টির নেতা জেরেমি করবিন বলেছেন, &lsquo;চুক্তি দেখিনি, তবে বলা যায় এটি জাতির জন্য ভালো কিছু হবে না।&rsquo; চুক্তির বিস্তারিত দেখে মতামত ঠিক করবেন বলে জানিয়েছেন তিনি।</p>\r\n\r\n<p>তবে যে ডেমোক্রেটিক ইউনিয়নিস্ট পার্টির (ডিইউপি) ওপর ভর করে থেরেসা মে সরকারে আছেন, সেই দলটি খসড়া চুক্তিতে সমর্থন দেবে বলে জানিয়েছে। নর্দান আয়ারল্যান্ডের এই দলটির প্রধান অ্যারলেন ফোস্টার বলেছেন, খসড়া চুক্তি নর্দান আয়ারল্যান্ডকে যুক্তরাজ্যের বাকি অংশ থেকে বিচ্ছিন্ন করবে। এটি যুক্তরাজ্যের অখণ্ডতার বিরোধী।</p>\r\n\r\n<p>ইইউর সঙ্গে যুক্তরাজ্যের এই বিচ্ছেদ ব্রেক্সিট (যা ব্রিটেন এক্সিটের সংক্ষেপিত রূপ) নামে পরিচিত। ২০১৬ সালের এক গণভোটে যুক্তরাজ্যের মানুষ ইইউর সঙ্গে বিচ্ছেদের পক্ষে রায় দেয়। এ নিয়ে রাজনৈতিক নানা নাটকীয়তার পর তৎকালীন প্রধানমন্ত্রী ডেভিড ক্যামেরন পদত্যাগ করেন। নতুন প্রধানমন্ত্রী হন থেরেসা মে। তিনি বিচ্ছেদ কার্যকরের আনুষ্ঠানিক প্রক্রিয়া শুরু করেন।<br />\r\nসমঝোতার ক্ষেত্রে সবচেয়ে বড় বাধা হয়ে দাঁড়ায় যুক্তরাজ্য ও ইইউর মধ্যকার আয়ারল্যান্ড সীমান্ত। স্বাধীন আয়ারল্যান্ড ইইউর সদস্য। আর বিচ্ছেদের পর যুক্তরাজ্যের অংশ নর্দান আয়ারল্যান্ড, ইইউ থেকে বেরিয়ে আসবে এমনটাই স্বাভাবিক। কিন্তু স্বাধীন আয়ারল্যান্ড ও নর্দান আয়ারল্যান্ডের মধ্যে কোনো সীমান্ত বাধা থাকবে না বলে চুক্তিবদ্ধ যুক্তরাজ্য। তাই দুই আয়ারল্যান্ডের মধ্যকার সীমানা উন্মুক্ত রেখে বিচ্ছেদ কার্যকর করাটা বড় চ্যালেঞ্জ হয়ে দাঁড়ায়।</p>\r\n\r\n<p><img alt=\"Bd flag\" height=\"180\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Flag_of_Bangladesh.svg/2000px-Flag_of_Bangladesh.svg.png\" width=\"200\" /></p>\r\n','এবার গৃহবিবাদ মেটানোই যুক্তরাজ্যের আসল চ্যালেঞ্জ',46,NULL,NULL,NULL,NULL,NULL,NULL),
+ (86,'<p>Removing this text is now allowed! R<span style=\"background-color:#c0392b\">emoving this text is now allowed! This template is licensed under CC BY 3.</span></p>\r\n\r\n<p>this text is now allow<span style=\"color:#27ae60\">ed! Removing this text is now allowed! This template is licensed under CC BY 3.</span></p>\r\n\r\n<p>text is now allowed! Re<span style=\"color:#e74c3c\">moving this text is now allowed! This template is licensed under CC</span> BY 3.</p>\r\n\r\n<p>is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>This template is licensed under CC BY 3.</p>\r\n\r\n<p>template is licensed under CC BY 3.</p>\r\n','ppppppppppp FEDuPSS G200 Gildan Ultra Cotton T-Shirt noooooo',42,77,'2018-11-16 12:49:36','on','2018-11-16 12:49:36',NULL,NULL),
+ (87,'<h1>mmmmmmmmmmmmmm</h1>\r\n\r\n<p>is text is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<h1>text is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</h1>\r\n\r\n<p>is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>is text is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>text is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>&nbsp;</p>\r\n','mmmmmmmm Presentation',42,77,'2018-11-16 15:03:22','on','2018-11-16 15:03:22',NULL,NULL),
+ (88,'<p>is text is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>text is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>is text is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>text is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>is text is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>text is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>is text is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>text is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>&nbsp;</p>\r\n','nnnnnnnnn',42,77,'2018-11-16 15:05:43','on','2018-11-16 15:05:43',NULL,NULL),
+ (89,'<p>is text is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>text is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>is text is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>text is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>is text is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>text is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>is now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>now allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>allowed! Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>Removing this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>this text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>text is now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>now allowed! This template is licensed under CC BY 3.</p>\r\n\r\n<p>allowed! This template is licensed under CC BY 3.</p>\r\n','sami............',43,77,'2018-11-16 15:08:50','publish','2018-11-16 15:08:50',NULL,NULL),
+ (90,'<p>oooooooook</p>\r\n\r\n<pre>\r\n<code>\r\n\r\npackage com.journaldev.util;\r\n\r\nimport java.util.Arrays;\r\n\r\npublic class JavaArrayExample {\r\n\r\n    /**\r\n     * This class shows different methods for copy array in java\r\n     * @param args\r\n     */\r\n    public static void main(String[] args) {\r\n        int[] source = {1,2,3,4,5,6,7,8,9};\r\n        int[] source1 = {1,2,3};\r\n        int[] destination=null;\r\n        System.out.println(&quot;Source array = &quot;+Arrays.toString(source));\r\n        \r\n        destination = copyFirstFiveFieldsOfArrayUsingSystem(source);\r\n        System.out.println(&quot; First five elements of array if available. Result array = &quot;+Arrays.toString(destination));\r\n        \r\n        destination = copyFirstFiveFieldsOfArrayUsingSystem(source1);\r\n        System.out.println(&quot; First five elements of array if available. Result array = &quot;+Arrays.toString(destination));\r\n        \r\n        destination = copyFullArrayUsingSystem(source);\r\n        System.out.println(&quot; full array using System.copyarray() function. Result array = &quot;+Arrays.toString(destination));\r\n        \r\n        destination = copyFullArrayUsingClone(source);\r\n        System.out.println(&quot; full array using clone() function. Result array = &quot;+Arrays.toString(destination));\r\n        \r\n        destination = copyFullArrayUsingArrayOf(source);\r\n        System.out.println(&quot; full array using Arrays.copyOf() function. Result array = &quot;+Arrays.toString(destination));\r\n        \r\n        destination = copyLastThreeUsingArrayOfRange(source);\r\n        System.out.println(&quot; last three elements using Arrays.copyOfRange() function. Result array = &quot;+Arrays.toString(destination));\r\n    }\r\n\r\n    /**\r\n     * This method copy full array using Arrays.copyOf() function\r\n     * @param source\r\n     * @return\r\n     */\r\n    private static int[] copyFullArrayUsingArrayOf(int[] source) {\r\n        return Arrays.copyOf(source, source.length);\r\n    }\r\n    \r\n    /**\r\n     * This method copy partial array (last 3 elements) using \r\n     * Arrays.copyOfRange() function\r\n     * @param source\r\n     * @return\r\n     */\r\n    private static int[] copyLastThreeUsingArrayOfRange(int[] source) {\r\n        //length check is necessary to avoid java.lang.ArrayIndexOutOfBoundsException\r\n        //but for simplicity I am not doing that\r\n        return Arrays.copyOfRange(source, source.length-3, source.length);\r\n    }\r\n\r\n    /**\r\n     * This method copy full array using clone() function\r\n     * @param source\r\n     * @return\r\n     */\r\n    private static int[] copyFullArrayUsingClone(int[] source) {\r\n        return source.clone();\r\n    }\r\n\r\n    /**\r\n     * This method copy full array using System.arraycopy() function\r\n     * @param source\r\n     * @return\r\n     */\r\n    private static int[] copyFullArrayUsingSystem(int[] source) {\r\n        int[] temp=new int[source.length];\r\n        System.arraycopy(source, 0, temp, 0, source.length);\r\n        return temp;\r\n    }\r\n\r\n    /**\r\n     * This method copy full first five elements of array \r\n     * using System.arraycopy() function\r\n     * @param source\r\n     * @return\r\n     */\r\n    private static int[] copyFirstFiveFieldsOfArrayUsingSystem(int[] source) {\r\n        if(source.length &gt; 5){\r\n            int[] temp=new int[5];\r\n            System.arraycopy(source, 0, temp, 0, 5);\r\n            return temp;\r\n        }else{\r\n            int[] temp=new int[source.length];\r\n            System.arraycopy(source, 0, temp, 0, source.length);\r\n            return temp;\r\n        }\r\n        \r\n    }\r\n\r\n}\r\n\r\n\r\n</code>\r\n</pre>\r\n\r\n<p>oooooooook</p>\r\n\r\n<p>oooooooook</p>\r\n\r\n<p>oooooooook</p>\r\n\r\n<p>oooooooook</p>\r\n\r\n<p>oooooooook</p>\r\n\r\n<p>oooooooook</p>\r\n\r\n<p>oooooooook</p>\r\n\r\n<p>oooooooook</p>\r\n\r\n<p>oooooooook</p>\r\n\r\n<p>oooooooook</p>\r\n\r\n<p>oooooooook</p>\r\n\r\n<p>oooooooook</p>\r\n','highlights',42,77,'2018-11-16 18:50:19','draft','2018-11-16 18:50:19',NULL,NULL),
+ (91,'<p>What is User-defined data type?</p>\r\nPassing Array to Method in Java\r\n\r\nWe can pass the java array to method so that we can reuse the same logic on any array.\r\n\r\nLet\'s see the simple example to get the minimum number of an array using a method.Passing Array to Method in Java\r\n\r\nWe can pass the java array to method so that we can reuse the same logic on any array.\r\n\r\nLet\'s see the simple example to get the minimum number of an array using a method.Passing Array to Method in Java\r\n\r\nWe can pass the java array to method so that we can reuse the same logic on any array.\r\n\r\nLet\'s see the simple example to get the minimum number of an array using a method.Passing Array to Method in Java\r\n\r\nWe can pass the java array to method so that we can reuse the same logic on any array.\r\n\r\nLet\'s see the simple example to get the minimum number of an array using a method.Passing Array to Method in Java\r\n\r\nWe can pass the java array to method so that we can reuse the same logic on any array.\r\n\r\nLet\'s see the simple example to get the minimum number of an array using a method.Passing Array to Method in Java\r\n\r\nWe can pass the java array to method so that we can reuse the same logic on any array.\r\n\r\nLet\'s see the simple example to get the minimum number of an array using a method.\r\n<pre class=\"code\" data-language=\"java\">\r\n    //Java Program to illustrate how to declare, instantiate, initialize  \r\n    //and traverse the Java array.  \r\n    class Testarray{  \r\n    public static void main(String args[]){  \r\n    int a[]=new int[5];//declaration and instantiation  \r\n    a[0]=10;//initialization  \r\n    a[1]=20;  \r\n    a[2]=70;  \r\n    a[3]=40;  \r\n    a[4]=50;  \r\n    //traversing array  \r\n    for(int i=0;i<a.length;i++)//length is the property of array  \r\n    System.out.println(a[i]);  \r\n    }}  \r\n</pre>\r\nPassing Array to Method in Java\r\n\r\nWe can pass the java array to method so that we can reuse the same logic on any array.\r\n\r\nLet\'s see the simple example to get the minimum number of an array using a method.Passing Array to Method in Java\r\n\r\nWe can pass the java array to method so that we can reuse the same logic on any array.\r\n\r\nLet\'s see the simple example to get the minimum number of an array using a method.Passing Array to Method in Java\r\n\r\nWe can pass the java array to method so that we can reuse the same logic on any array.\r\n\r\nLet\'s see the simple example to get the minimum number of an array using a method.Passing Array to Method in Java\r\n\r\nWe can pass the java array to method so that we can reuse the same logic on any array.\r\n\r\nLet\'s see the simple example to get the minimum number of an array using a method.Passing Array to Method in Java\r\n\r\nWe can pass the java array to method so that we can reuse the same logic on any array.\r\n\r\nLet\'s see the simple example to get the minimum number of an array using a method.Passing Array to Method in Java\r\n\r\nWe can pass the java array to method so that we can reuse the same logic on any array.\r\n\r\nLet\'s see the simple example to get the minimum number of an array using a method.Passing Array to Method in Java\r\n\r\nWe can pass the java array to method so that we can reuse the same logic on any array.\r\n\r\nLet\'s see the simple example to get the minimum number of an array using a method.Passing Array to Method in Java\r\n\r\nWe can pass the java array to method so that we can reuse the same logic on any array.\r\n\r\nLet\'s see the simple example to get the minimum number of an array using a method.Passing Array to Method in Java\r\n\r\nWe can pass the java array to method so that we can reuse the same logic on any array.\r\n\r\nLet\'s see the simple example to get the minimum number of an array using a method.Passing Array to Method in Java\r\n\r\nWe can pass the java array to method so that we can reuse the same logic on any array.\r\n\r\nLet\'s see the simple example to get the minimum number of an array using a method.Passing Array to Method in Java\r\n\r\nWe can pass the java array to method so that we can reuse the same logic on any array.\r\n\r\nLet\'s see the simple example to get the minimum number of an array using a method.Passing Array to Method in Java\r\n\r\nWe can pass the java array to method so that we can reuse the same logic on any array.\r\n\r\nLet\'s see the simple example to get the minimum number of an array using a method.Passing Array to Method in Java\r\n\r\nWe can pass the java array to method so that we can reuse the same logic on any array.\r\n\r\nLet\'s see the simple example to get the minimum number of an array using a method.Passing Array to Method in Java\r\n\r\nWe can pass the java array to method so that we can reuse the same logic on any array.\r\n\r\nLet\'s see the simple example to get the minimum number of an array using a method.\r\n','Hightlight What is User-defined data type?',42,77,'2018-11-18 20:38:00','publish','2018-11-18 20:38:00',NULL,NULL),
+ (92,'A design pattern is a well-proved solution for solving the specific problem/task.\r\n\r\nFor example, to create a class for which only a single instance should be created and that single object can be used by all other classes, use Singleton design pattern.\r\n\r\nDesign patterns are programming language independent, it is for solving the common object-oriented design problems.\r\n\r\nA design pattern represents an idea, not an implementation.\r\n\r\nBy using the design patterns we can make our code more flexible, reusable and maintainable.\r\n\r\nJava itself internally follows design patterns.\r\n\r\nIn core java, there are mainly three types of design patterns, which are further divided into their sub-parts:\r\n\r\n    Creational Design Pattern\r\n        Factory Pattern\r\n        Abstract Factory Pattern\r\n        Singleton Pattern\r\n        Prototype Pattern\r\n        Builder Pattern.\r\n    Structural Design Pattern\r\n        Adapter Pattern\r\n        Bridge Pattern\r\n        Composite Pattern\r\n        Decorator Pattern\r\n        Facade Pattern\r\n        Flyweight Pattern\r\n        Proxy Pattern\r\n    Behavioral Design Pattern\r\n        Chain Of Responsibility Pattern\r\n        Command Pattern\r\n        Interpreter Pattern\r\n        Iterator Pattern\r\n        Mediator Pattern\r\n        Memento Pattern\r\n        Observer Pattern\r\n        State Pattern\r\n        Strategy Pattern\r\n        Template Pattern\r\n        Visitor Pattern\r\n\r\nCreational design patterns are used when creating objects. \r\nIterator pattern accesses the elements of a collection object in sequential manner without knowing its underlying representation.\r\n\r\nIterator pattern is one of the behavioral patterns.\r\nExample\r\n<pre class=\"code\" data-language=\"java\">\r\ninterface Iterator {\r\n   public boolean hasNext();\r\n   public Object next();\r\n}/*from w w w  . j a  v  a  2  s .  c  om*/\r\nclass LetterBag {\r\n   public String names[] = {\"R\" , \"J\" ,\"A\" , \"L\"};\r\n   public Iterator getIterator() {\r\n      return new NameIterator();\r\n   }\r\n   class NameIterator implements Iterator {\r\n      int index;\r\n      @Override\r\n      public boolean hasNext() {\r\n         if(index < names.length){\r\n            return true;\r\n         }\r\n         return false;\r\n      }\r\n      @Override\r\n      public Object next() {\r\n         if(this.hasNext()){\r\n            return names[index++];\r\n         }\r\n         return null;\r\n      }    \r\n   }\r\n}\r\npublic class Main {\r\n   public static void main(String[] args) {\r\n      LetterBag bag = new LetterBag();\r\n      for(Iterator iter = bag.getIterator(); iter.hasNext();){\r\n         String name = (String)iter.next();\r\n         System.out.println(\"Name : \" + name);\r\n      }   \r\n   }\r\n}\r\n</pre>\r\nObserver pattern is used to notify its depenedent objects if one object is modified,.\r\n\r\nObserver pattern is a behavioral pattern category. Observer pattern is used to notify its depenedent objects if one object is modified,.\r\n\r\nObserver pattern is a behavioral pattern category. Observer pattern is used to notify its depenedent objects if one object is modified,.\r\n\r\nObserver pattern is a behavioral pattern category. Observer pattern is used to notify its depenedent objects if one object is modified,.\r\n\r\nObserver pattern is a behavioral pattern category. ','Java Design Patterns Tutorial - Java Design Pattern - Observer Pattern',44,77,'2018-11-18 20:44:33','publish','2018-11-18 20:44:33',NULL,NULL);
+/*!40000 ALTER TABLE `post` ENABLE KEYS */;
+
+
+--
+-- Definition of table `post_tag`
+--
+
+DROP TABLE IF EXISTS `post_tag`;
+CREATE TABLE `post_tag` (
+  `post_id` bigint(20) NOT NULL,
+  `tag_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`post_id`,`tag_id`),
+  KEY `FKac1wdchd2pnur3fl225obmlg0` (`tag_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `post_tag`
+--
+
+/*!40000 ALTER TABLE `post_tag` DISABLE KEYS */;
+INSERT INTO `post_tag` (`post_id`,`tag_id`) VALUES 
+ (87,47),
+ (87,48),
+ (87,49),
+ (87,50),
+ (89,47),
+ (89,56),
+ (90,49),
+ (90,50),
+ (91,47),
+ (91,48),
+ (91,49),
+ (91,50),
+ (91,56),
+ (92,47),
+ (92,52);
+/*!40000 ALTER TABLE `post_tag` ENABLE KEYS */;
+
+
+--
+-- Definition of table `privilize`
+--
+
+DROP TABLE IF EXISTS `privilize`;
+CREATE TABLE `privilize` (
+  `id` bigint(20) NOT NULL,
+  `privilize_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_m07onguse6k82umgeana3uska` (`privilize_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `privilize`
+--
+
+/*!40000 ALTER TABLE `privilize` DISABLE KEYS */;
+INSERT INTO `privilize` (`id`,`privilize_name`) VALUES 
+ (3,'READ'),
+ (11,'WRITE'),
+ (12,'DELETE');
+/*!40000 ALTER TABLE `privilize` ENABLE KEYS */;
+
+
+--
+-- Definition of table `role`
+--
+
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE `role` (
+  `id` bigint(20) NOT NULL,
+  `rolename` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_nctmxadhieiw7aduxjy4dfglt` (`rolename`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `role`
+--
+
+/*!40000 ALTER TABLE `role` DISABLE KEYS */;
+INSERT INTO `role` (`id`,`rolename`) VALUES 
+ (71,'ADMIN'),
+ (72,'USER');
+/*!40000 ALTER TABLE `role` ENABLE KEYS */;
+
+
+--
+-- Definition of table `role_privilize`
+--
+
+DROP TABLE IF EXISTS `role_privilize`;
+CREATE TABLE `role_privilize` (
+  `role_id` bigint(20) NOT NULL,
+  `privilize_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`role_id`,`privilize_id`),
+  KEY `FK6opfi7gw55kkaqk1ap36soedn` (`privilize_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `role_privilize`
+--
+
+/*!40000 ALTER TABLE `role_privilize` DISABLE KEYS */;
+INSERT INTO `role_privilize` (`role_id`,`privilize_id`) VALUES 
+ (71,3),
+ (71,11),
+ (71,12),
+ (72,3);
+/*!40000 ALTER TABLE `role_privilize` ENABLE KEYS */;
+
+
+--
+-- Definition of table `tag`
+--
+
+DROP TABLE IF EXISTS `tag`;
+CREATE TABLE `tag` (
+  `id` bigint(20) NOT NULL,
+  `tag_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_1r1tyf6uga9k6jwdqnoqwtk2a` (`tag_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tag`
+--
+
+/*!40000 ALTER TABLE `tag` DISABLE KEYS */;
+INSERT INTO `tag` (`id`,`tag_name`) VALUES 
+ (47,'java'),
+ (48,'spring'),
+ (49,'core java'),
+ (50,'spring framwork'),
+ (51,'Dependency Injection'),
+ (52,'spring context'),
+ (53,'spring IoC'),
+ (54,'autowired'),
+ (55,'qualifier'),
+ (56,'bean');
+/*!40000 ALTER TABLE `tag` ENABLE KEYS */;
+
+
+--
+-- Definition of table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` bigint(20) NOT NULL,
+  `activation_key` varchar(100) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `is_ctivated` bit(1) DEFAULT NULL,
+  `joining_date` datetime DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `mobile` varchar(255) DEFAULT NULL,
+  `reset_pass_key` varchar(100) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_ob8kqyqqgmefl0aco34akdtpe` (`email`),
+  UNIQUE KEY `UK_cnjwxx5favk5ycqajjt17fwy1` (`mobile`),
+  UNIQUE KEY `UK_sb8bbouer5wak8vyiiy4pf2bx` (`username`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user`
+--
+
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` (`id`,`activation_key`,`email`,`first_name`,`is_ctivated`,`joining_date`,`last_name`,`mobile`,`reset_pass_key`,`username`,`password`) VALUES 
+ (77,NULL,'sejuti2006@mail.com','Sejuti',0x01,'2018-11-03 23:49:39',NULL,'01908000015',NULL,'sejuti','$2a$10$sCno1c2.kKf0iTO8Cbtpaepy0HhnLpTP8/5G4LDYlsbvA7xxxPaty'),
+ (73,NULL,'springapidev@gmail.com','Mohammad Rajaul',0x01,'2018-11-03 23:44:26',NULL,'01686239146',NULL,'rajaul','$2a$10$swO3Fon9KUAxhvzSaKWHZuIjBTOd0tr5TFj1NI7Fz9dolPuPtxnbe'),
+ (74,NULL,'sami@fedupss.com','Sami',0x01,'2018-11-03 22:06:51',NULL,'01686239144',NULL,'sami','$2a$10$FS6QrbXwD/le466Hrho8IuXTObkN88IZl/q3Uc8dyKi.2FEHOouEq'),
+ (78,NULL,'sayonti@mail.com','Sayonti',0x01,'2018-11-09 12:55:47',NULL,'01686230000',NULL,'sayonti','$2a$10$BwJ89abFgf76iemTUcY6NuHEM.EjT23HUZBmUmOpLI0SGpR4uPYCG');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+
+
+--
+-- Definition of table `user_role`
+--
+
+DROP TABLE IF EXISTS `user_role`;
+CREATE TABLE `user_role` (
+  `user_id` bigint(20) NOT NULL,
+  `role_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`user_id`,`role_id`),
+  KEY `FKa68196081fvovjhkek5m97n3y` (`role_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user_role`
+--
+
+/*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
+INSERT INTO `user_role` (`user_id`,`role_id`) VALUES 
+ (73,71),
+ (74,72),
+ (77,71),
+ (77,72),
+ (78,71),
+ (78,72);
+/*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
+
+
+
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

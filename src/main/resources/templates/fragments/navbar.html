@@ -4,8 +4,8 @@
 <body>
         <nav th:fragment="main-navbar" class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="index.html"><img src="images/logo.svg" alt="logo"/></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
+                <a class="navbar-brand brand-logo" th:href="@{/}" href="/"><img src="images/logo.svg" alt="logo"/></a>
+                <a class="navbar-brand brand-logo-mini" th:href="@{/}"  href="/"><img src="images/logo-mini.svg" alt="logo"/></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
                 <div class="search-field ml-4 d-none d-md-block">
@@ -140,7 +140,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle nav-profile" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                            <img src="images/faces/face1.jpg" alt="image">
+                            <img src="/images/faces/face1.jpg" th:src="@{/images/faces/face1.jpg}" alt="image">
                             <span class="d-none d-lg-inline">Rajaul Islam</span>
                         </a>
                         <div class="dropdown-menu navbar-dropdown w-100" aria-labelledby="profileDropdown">
@@ -149,14 +149,14 @@
                                 Activity Log
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="/logout" th:href="@{/logout}">
                                 <i class="mdi mdi-logout mr-2 text-primary"></i>
                                 Signout
                             </a>
                         </div>
                     </li>
                     <li class="nav-item nav-logout d-none d-lg-block">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link"  href="/logout" th:href="@{/logout}">
                             <i class="mdi mdi-power"></i>
                         </a>
                     </li>
