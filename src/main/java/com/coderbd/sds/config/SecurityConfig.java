@@ -58,12 +58,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/fonts/**",
                         "/webfonts/**",
                         "/signup/**",
-                        "/forget-password/**"
+                        "/forget-password/**",
+                        "/user/**",
+                        "/test/**"
                 ).permitAll()
                 .antMatchers(
                         "/**",
                        "/privilize/**",
-                        "/user/**",
                         "/role/**"
                         ).hasRole("ADMIN")
                 .antMatchers("/port/**").hasRole("USER")
@@ -71,14 +72,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/login.do")
                 .permitAll()
                 .and()
                 .logout()
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login?logout")
+                .logoutSuccessUrl("/login.do?logout")
                 .permitAll()
                 .and()
                 .exceptionHandling()

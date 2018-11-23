@@ -56,5 +56,10 @@ repo.deleteById(id);
         return repo.findByUserName(userName);
     }
 
+    @Override
+    public User findByUserNameAndPassword(String userName, String password) {
+        return repo.findByUserNameAndPassword(userName,password);
+    }
+
 
 }

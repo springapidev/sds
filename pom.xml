@@ -9,7 +9,7 @@
     <packaging>jar</packaging>
 
     <name>sds</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Mohammad Rajaul Islam, Java Developer, Skype: java-trainer-99, Email: springapidev@gmail.com</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

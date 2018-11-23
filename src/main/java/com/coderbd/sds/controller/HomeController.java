@@ -18,6 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController {
 
+@Autowired
+private UserService userService;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "6") int perPage) {
         ModelAndView modelAndView = new ModelAndView();
@@ -26,7 +29,7 @@ public class HomeController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login.do", method = RequestMethod.GET)
     public String login() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
@@ -71,6 +74,10 @@ public class HomeController {
         model.addAttribute("users", userRepo.findAll());
         return "event";
     }
+    @RequestMapping(value = "/test.do", method = RequestMethod.GET)
+    public String testLocale(Model model) {
 
+        return "testlocale";
+    }
 
 }
