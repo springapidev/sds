@@ -20,7 +20,11 @@ public class HomeController {
 
 @Autowired
 private UserService userService;
-
+    
+	@Autowired
+    private RoleService roleservice;
+	
+	
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "6") int perPage) {
         ModelAndView modelAndView = new ModelAndView();
@@ -79,5 +83,22 @@ private UserService userService;
 
         return "testlocale";
     }
+ 
+    /*@RequestMapping(value = "/insert.do", method = RequestMethod.GET)
+    public void insertdata() {
+Role role=new Role();
+role.setRolename("ROLE_ADMIN");
+roleservice.save(role);
+User user=new User();
+ Set<Role> roles = new HashSet<>();
+       Role role2=roleservice.isAlreadyExist("ROLE_ADMINROLE_ADMIN");                
+            roles.add(role2);        
+        user.setRoles(roles);
+		user.setUsername("admin");
+       user.setPassword(passwordEncoder.encode("12345678"));
+	   user.email("rajaul.cse@gmail.com");
+        user.setJoiningDate(new Date());
+        user.setActivated(true);
 
+    }*/
 }

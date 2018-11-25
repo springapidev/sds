@@ -61,11 +61,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/forget-password/**",
                         "/user/**",
                         "/test/**",
-						 "/privilize/**",
-                        "/role/**"
+						 "/role/**",
+						"/**"
                 ).permitAll()
                 .antMatchers(
-                        "/**"
+                        "/privilize/**"
                        ).hasRole("ADMIN")
                 .antMatchers("/port/**").hasRole("USER")
                 .anyRequest()
