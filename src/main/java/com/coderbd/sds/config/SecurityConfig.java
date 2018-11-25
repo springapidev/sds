@@ -64,12 +64,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						 "/role/**",
 						"/**"
                 ).permitAll()
-                .antMatchers(
+               /* .antMatchers(
                         "/privilize/**"
                        ).hasRole("ADMIN")
                 .antMatchers("/port/**").hasRole("USER")
                 .anyRequest()
-                .authenticated()
+                .authenticated()	*/
                 .and()
                 .formLogin()
                 .loginPage("/login.do")
