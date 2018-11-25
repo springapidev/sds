@@ -1,8 +1,10 @@
 package com.coderbd.sds.controller.nmsConfig;
 
 
-import com.coderbd.sds.entity.nmsConfig.Data;
-import com.coderbd.sds.repo.DataRepo;
+
+
+import com.coderbd.sds.entity.nmsConfig.Setting;
+import com.coderbd.sds.repo.SettingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,57 +15,76 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.HashSet;
 import java.util.Optional;
-import java.util.Set;
 
 @Controller
-@RequestMapping("/data/")
-public class DataController {
+@RequestMapping("/setting/")
+public class SettingController {
     @Autowired
-    private DataRepo repo;
+    private SettingRepo repo;
 
     @RequestMapping(value = "create.do", method = RequestMethod.GET)
     public ModelAndView getView() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("obj", new Data());
-        modelAndView.setViewName("data/create");
+        modelAndView.addObject("obj", new Setting());
+        modelAndView.setViewName("settings/create");
         return modelAndView;
     }
 
+    /**
+     *
+     * @param obj
+     * @param bindingResult
+     * @return
+     */
     @RequestMapping(value = "create.do", method = RequestMethod.POST)
-    public ModelAndView saveOrUpdate(@Valid Data obj, BindingResult bindingResult) {
+    public ModelAndView saveOrUpdate(@Valid Setting obj, BindingResult bindingResult) {
         ModelAndView modelAndView=new ModelAndView();
         if (bindingResult.hasErrors()) {
-            modelAndView.setViewName("data/create");
+            modelAndView.setViewName("settings/create");
         } else {
                 repo.save(obj);
                 modelAndView.addObject("successMessage", "Insert Success");
             }
-            modelAndView.addObject("obj", new Data());
-            modelAndView.setViewName("data/create");
+            modelAndView.addObject("obj", new Setting());
+            modelAndView.setViewName("settings/create");
         return modelAndView;
     }
 
+    /**
+     *
+     * @param id
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "edit/{id}", method = RequestMethod.GET)
     public String updateRole(@PathVariable Integer id, Model model) {
-        Optional<Data> obj1 = repo.findById(id);
+        Optional<Setting> obj1 = repo.findById(id);
         model.addAttribute("obj",obj1);
-        return "data/create";
+        return "settings/create";
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "del/{id}", method = RequestMethod.GET)
     public String delRole(@PathVariable Integer id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("successMessage", "Delete Success");
-        return "redirect:/data/create";
+        return "redirect:/settings/create";
     }
 
+    /**
+     *
+     * @return
+     */
     @RequestMapping(value = "list.do", method = RequestMethod.GET)
     public ModelAndView getList() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("list", repo.findAll());
-        modelAndView.setViewName("data/list");
+        modelAndView.setViewName("settings/list");
         return modelAndView;
     }
 }

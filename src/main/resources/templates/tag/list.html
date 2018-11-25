@@ -4,7 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout2.html}">
 
 <head>
-    <title>Data Info List</title>
+    <title>Tag Info List</title>
 </head>
 <body>
 <div layout:fragment="custom-content">
@@ -24,12 +24,13 @@
                 </thead>
                 <tbody>
                 <tr th:each="data : ${list}">
-                    <td th:text="${data.getType()}">Type</td>
-                    <td th:text="${data.getType()}">Version</td>
-                    <td th:text="${data.getType()}">Version</td>
-                    <td th:text="${data.getType()}">Version</td>
-                    <td th:text="${data.getType()}">Version</td>
-                    <td th:text="${data.getType()}">Version</td>
+                    <td th:text="${data.getPointName()}">Version</td>
+                    <td th:text="${data.getPointName()}">Version</td>
+                    <td th:text="${data.getPointName()}">Version</td>
+                    <td th:text="${data.getPointName()}">Version</td>
+                    <td th:text="${data.getPointName()}">Version</td>
+                    <td th:text="${data.getPointName()}">Version</td>
+
                 </tr>
 
                 </tbody>

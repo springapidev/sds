@@ -12,22 +12,22 @@ public class Device implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
+    @Basic(optional = false)
     @Column(name = "d_type")
     private int type;
 
-
+    @Basic(optional = false)
     @Column(name = "d_name")
     private String name;
 
-
+    @Basic(optional = false)
     @Column(name = "d_ip")
     private String ip;
-
+    @Basic(optional = false)
     @Column(name = "d_mac")
     private String mac;
 
-
+    @Basic(optional = false)
     @Column(name = "d_ignore")
     private int ignore;
 
@@ -43,12 +43,12 @@ public class Device implements Serializable {
     @Column(name = "iet_file")
     private String ietFile;
 
-
+    @Basic(optional = false)
     @Column(name = "d_port")
     private int port;
 
 
-
+    @Basic(optional = false)
     @Column(name = "d_community")
     private String community;
 

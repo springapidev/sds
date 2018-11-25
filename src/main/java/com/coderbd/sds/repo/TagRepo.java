@@ -1,7 +1,6 @@
 package com.coderbd.sds.repo;
 
 
-import com.coderbd.sds.entity.nmsConfig.Rcb;
 import com.coderbd.sds.entity.nmsConfig.Tag;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
