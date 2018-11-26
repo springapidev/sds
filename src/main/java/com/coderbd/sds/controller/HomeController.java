@@ -2,6 +2,7 @@ package com.coderbd.sds.controller;
 
 import com.coderbd.sds.entity.Role;
 import com.coderbd.sds.entity.User;
+import com.coderbd.sds.locale.Test;
 import com.coderbd.sds.repo.RoleRepo;
 import com.coderbd.sds.repo.UserRepo;
 import com.coderbd.sds.service.RoleService;
@@ -38,12 +39,14 @@ public class HomeController {
     public ModelAndView index(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "6") int perPage) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("title", "Hire Us to Build Your  Future ");
+
         modelAndView.setViewName("index");
         return modelAndView;
     }
 
     @RequestMapping(value = "/login.do", method = RequestMethod.GET)
     public String login() {
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         if (!(auth instanceof AnonymousAuthenticationToken)) {
@@ -92,6 +95,9 @@ public class HomeController {
     @RequestMapping(value = "/test.do", method = RequestMethod.GET)
     public String testLocale(Model model) {
 
+        String msg=Test.unicodeToString(Test.getUnicode("환영"));
+        System.out.println(msg);
+        model.addAttribute("uni", "환영");
         return "testlocale";
     }
 
