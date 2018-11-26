@@ -58,15 +58,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/fonts/**",
                         "/webfonts/**",
                         "/signup/**",
-                        "/forget-password/**",
-                        "/user/**",
-                        "/test/**",
-						 "/role/**",
-						"/**",
-                        "/insert.do"
+                        "/forget-password/**"
                 ).permitAll()
                 .antMatchers(
-                        "/privilize/**"
+                        "/**"
                        ).hasRole("ADMIN")
                 .antMatchers("/port/**").hasRole("USER")
                 .anyRequest()
