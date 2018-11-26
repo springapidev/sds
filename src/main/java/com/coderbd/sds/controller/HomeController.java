@@ -95,7 +95,7 @@ public class HomeController {
         return "testlocale";
     }
 
-    @RequestMapping(value = "/insert.do", method = RequestMethod.GET)
+  /*  @RequestMapping(value = "/insert.do", method = RequestMethod.GET)
     public void insertdata() {
         Role role = new Role();
         role.setRolename("ADMIN");
@@ -116,4 +116,5 @@ public class HomeController {
         userService.save(user);
 
     }
+    */
 }
