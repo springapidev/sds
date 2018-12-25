@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouttree.html}">
+
+<head>
+    <title>Device Info List</title>
+</head>
+<body>
+<div layout:fragment="custom-content">
+    <div class="row">
+<div class="treeview col-3">
+    <h3>Ethernet Switch</h3>
+        <ul type="none" class="treeli">
+            <li class="treel" th:each="data : ${eslist}"><a href="#" th:text="${data.switchName}"></a>
+                <ul type="none">
+                    <li th:each="ip : ${data.getIpAddresList()}" th:class="${ip.status}" ><a href="#" th:text="${ip.ipAddress}" th:title="${ip.ipAddress}"></a></li>
+                </ul>
+            </li>
+        </ul>
+</div>
+
+        <div class="treeview col-3">
+            <h3>SA Parent</h3>
+            <ul type="none" class="treeli">
+                <li th:each="data : ${salist}"><a href="#" th:text="${data.saParentName}"></a>
+                    <ul type="none">
+                        <li th:each="ip : ${data.getIpAddresList()}" th:class="${ip.status}"><a href="#" th:text="${ip.ipAddress}"></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="treeview col-3">
+            <h3>IED</h3>
+            <ul type="none" class="treeli">
+                <li th:each="data : ${eslist}"><a href="#" th:text="${data.switchName}"></a>
+                    <ul type="none">
+                        <li th:each="ip : ${data.getIpAddresList()}" th:class="${ip.status}"><a href="#" th:text="${ip.ipAddress}"></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="treeview col-3">
+            <h3>SNTP</h3>
+            <ul type="none" class="treeli">
+                <li th:each="data : ${sntplist}"><a href="#" th:text="${data.sntpName}"></a>
+                    <ul type="none">
+                        <li th:each="ip : ${data.getIpAddresList()}" th:class="${ip.status}"><a href="#" th:text="${ip.ipAddress}"></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

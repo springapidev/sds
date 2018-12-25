@@ -27,7 +27,7 @@ public class SettingController {
     public ModelAndView getView() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("obj", new Setting());
-        modelAndView.setViewName("settings/create");
+        modelAndView.setViewName("ied-create");
         return modelAndView;
     }
 
@@ -41,13 +41,13 @@ public class SettingController {
     public ModelAndView saveOrUpdate(@Valid Setting obj, BindingResult bindingResult) {
         ModelAndView modelAndView=new ModelAndView();
         if (bindingResult.hasErrors()) {
-            modelAndView.setViewName("settings/create");
+            modelAndView.setViewName("ied-create");
         } else {
                 repo.save(obj);
                 modelAndView.addObject("successMessage", "Insert Success");
             }
             modelAndView.addObject("obj", new Setting());
-            modelAndView.setViewName("settings/create");
+            modelAndView.setViewName("ied-create");
         return modelAndView;
     }
 
@@ -61,7 +61,7 @@ public class SettingController {
     public String updateRole(@PathVariable Integer id, Model model) {
         Optional<Setting> obj1 = repo.findById(id);
         model.addAttribute("obj",obj1);
-        return "settings/create";
+        return "ied-create";
     }
 
     /**

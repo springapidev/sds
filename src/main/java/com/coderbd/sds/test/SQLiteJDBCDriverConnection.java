@@ -12,12 +12,12 @@ import java.util.List;
 /**
  * @author sqlitetutorial.net
  */
-@Controller
+
 public class SQLiteJDBCDriverConnection {
     /**
      * Connect to a sample database
      */
-    public static Connection connect() {
+  /*  public static Connection connect() {
         Connection conn = null;
         try {
             // db parameters
@@ -58,7 +58,7 @@ public class SQLiteJDBCDriverConnection {
             [community] TEXT NOT NULL DEFAULT public,
             version] INTEGER NOT NULL DEFAULT 1)
                  */
-                Device device = new Device();
+      /*          Device device = new Device();
                 device.setId(rs.getInt(1));
                 device.setType(rs.getInt(2));
                 device.setIp(rs.getString(3));
@@ -82,10 +82,9 @@ public class SQLiteJDBCDriverConnection {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+*/
 
     }
 
 
 
-}

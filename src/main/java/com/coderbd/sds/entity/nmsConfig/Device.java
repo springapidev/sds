@@ -14,20 +14,20 @@ public class Device implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @Column(name = "d_type")
-    private int type;
+    private String type;
 
     @Basic(optional = false)
     @Column(name = "d_name")
     private String name;
 
-    @Basic(optional = false)
+
     @Column(name = "d_ip")
     private String ip;
-    @Basic(optional = false)
+
     @Column(name = "d_mac")
     private String mac;
 
-    @Basic(optional = false)
+
     @Column(name = "d_ignore")
     private int ignore;
 
@@ -48,7 +48,7 @@ public class Device implements Serializable {
     private int port;
 
 
-    @Basic(optional = false)
+
     @Column(name = "d_community")
     private String community;
 
@@ -75,11 +75,15 @@ public class Device implements Serializable {
     public Device() {
     }
 
+    public Device(String name) {
+        this.name = name;
+    }
+
     public Device(Integer id) {
         this.id = id;
     }
 
-    public Device(Integer id, int type, String name, String ip, int ignore, int port, String community, int version) {
+    public Device(Integer id, String type, String name, String ip, int ignore, int port, String community, int version) {
         this.id = id;
         this.type = type;
         this.name = name;
@@ -98,11 +102,11 @@ public class Device implements Serializable {
         this.id = id;
     }
 
-    public int getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
     }
 

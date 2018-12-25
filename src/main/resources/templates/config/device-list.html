@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout2.html}">
+
+<head>
+    <title>Device Info List</title>
+</head>
+<body>
+<div layout:fragment="custom-content">
+    <div class="row">
+        <div class="col-12 grid-margin">
+            <div style="float: right">
+                <button type="button" class="btn btn-info btn-small" data-toggle="modal" data-target="#iedModal">IED Additional</button>
+                <button type="button" class="btn btn-info btn-small" data-toggle="modal" data-target="#">SA Parent Operating Device Add</button>
+                <button type="button" class="btn btn-info btn-small" data-toggle="modal" data-target="#">SNTP Add</button>
+                <button type="button" class="btn btn-info btn-small" data-toggle="modal" data-target="#">Ethernet Switch Add</button>
+                <button type="button" class="btn btn-info btn-small" data-toggle="modal" data-target="#">Modify</button>
+                <button type="button" class="btn btn-info btn-small" data-toggle="modal" data-target="#">Delete</button>
+            </div>
+
+            <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Type Of Device</th>
+                    <th>Device Name</th>
+                    <th>Ip Address</th>
+                    <th>Number Of Ports</th>
+                    <th>SCL Free</th>
+                    <th>IET Download</th>
+
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="data : ${list}">
+                    <td><input th:type="checkbox"/></td>
+                    <td th:text="${data.type}">type</td>
+                    <td th:text="${data.name}">name</td>
+                    <td th:text="${data.ip}">ip</td>
+                    <td th:text="${data.port}">port</td>
+                    <td th:text="${data.ietFileName}">ietFileName</td>
+                    <td th:text="${data.ietFile}">ietFile</td>
+                </tr>
+
+                </tbody>
+            </table>
+
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                <tr>
+                    <td class="gutter">
+                        <div class="line number1 index0 alt2" style="display: none;">1</div>
+                    </td>
+                    <td class="code">
+                        <div class="container" style="display: none;">
+                            <div class="line number1 index0 alt2" style="display: none;">&nbsp;</div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Modal for IED-->
+<div class="modal fade" id="iedModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for IED-->
+
+</body>
+</html>

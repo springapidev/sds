@@ -22,7 +22,13 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" th:href="@{ https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css}"/>
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css" th:href="@{https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css}"/>
 
-
+<style type="text/css">
+    div.dt-buttons{
+        position:relative;
+        float:right;
+        margin-left: 10px;
+    }
+</style>
 
 </head>
 <body>
@@ -73,8 +79,13 @@
 <script th:src="@{https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js}" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 <script th:src="@{https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js}" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 <script th:src="@{https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js}" src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
-
-
+<script th:src="@{https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js}" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+<script th:src="@{https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js}" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js}" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js}" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js}" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script th:src="@{https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js}" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+<script th:src="@{https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js}" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
 
 <script type="text/javascript">
     var IS_IPAD=navigator.userAgent.match(/iPad/i)!=null;
@@ -104,8 +115,17 @@
     }
 </script>
 <script>
+    // $(document).ready(function() {
+    //     $('#example').DataTable();
+    // } );
+
     $(document).ready(function() {
-        $('#example').DataTable();
+        $('#example').DataTable( {
+            dom: 'lBfrtip',
+            buttons: [
+                 'csv', 'pdf', 'print'
+            ]
+        } );
     } );
 </script>
 

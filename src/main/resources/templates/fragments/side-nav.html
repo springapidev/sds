@@ -14,7 +14,24 @@
                         <i class="mdi mdi-home menu-icon"></i>
                     </a>
                 </li>
+
                 <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#data" aria-expanded="false" aria-controls="data">
+                        <span class="menu-title">GOOSE Surveillance</span>
+                        <i class="menu-arrow"></i>
+                        <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                    </a>
+                    <div class="collapse" id="data">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" th:href="@{/goose/event.do}" href="/goose/event.do">Real Time History</a></li>
+                            <li class="nav-item"> <a class="nav-link" th:href="@{/goose/runtime.do}" href="/goose/runtime.do">GOOSE State</a></li>
+                            <li class="nav-item"> <a class="nav-link" th:href="@{/goose/scan.do}" href="/goose/scan.do">GOOSE Scan</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+
+                <!--li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#device" aria-expanded="false" aria-controls="device">
                         <span class="menu-title">Device</span>
                         <i class="menu-arrow"></i>
@@ -174,9 +191,25 @@
                             <li class="nav-item"> <a class="nav-link" th:href="@{/rcb/list.do}" href="/rcb/list.do">List</a></li>
                         </ul>
                     </div>
+                </li-->
+
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#Prefernces" aria-expanded="false" aria-controls="Prefernces">
+                        <span class="menu-title">Prefernces</span>
+                        <i class="menu-arrow"></i>
+                        <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                    </a>
+                    <div class="collapse" id="Prefernces">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" th:href="@{/config/device.do}" href="/config/device.do">System Settings</a></li>
+                            <li class="nav-item"> <a class="nav-link" th:href="@{/config/sa-create.do}" href="/config/sa-create.do">Adding SA Top Operating Devices</a></li>
+                            <li class="nav-item"> <a class="nav-link" th:href="@{/config/sntp-create.do}" href="/config/sntp-create.do">SNTP Add</a></li>
+                            <li class="nav-item"> <a class="nav-link" th:href="@{/config/es-create.do}" href="/config/es-create.do">Ethernet Switch Add</a></li>
+
+                            <li class="nav-item"> <a class="nav-link" th:href="@{/config/ethernet-switch.do}" href="/config/ethernet-switch.do">Ethernet Switch( Port Setting )</a></li>
+                        </ul>
+                    </div>
                 </li>
-
-
 
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#setings" aria-expanded="false" aria-controls="setings">
